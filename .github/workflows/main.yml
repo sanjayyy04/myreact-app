@@ -41,8 +41,8 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./build
           publish_branch: gh-pages
-          user_name: Your Name
-          user_email:
+          user_name: sanjay
+          user_email: "smchauhan2004@gmail.com"
           commit_message: "Deploy MyReact App"
           force_orphan: true
           keep_files: false
