@@ -47,6 +47,11 @@ jobs:
           force_orphan: true
           keep_files: false
 
+      - name: Push to gh-pages
+        run: git push origin --force gh-pages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
         # Example for deploying to Netlify:
         # uses: nwtgck/actions-netlify@v1.2
         # with:
