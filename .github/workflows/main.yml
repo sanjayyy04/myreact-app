@@ -4,6 +4,10 @@ on:
   push:
     branches:
       - main
+    paths-ignore:
+      - "README.md"
+      - ".github/workflows/**"
+  workflow_dispatch:
 
 jobs:
   build:
@@ -29,4 +33,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: deploy
-        run: echo "deployed sucessfully"
+        # Add your deployment steps here
+        # e.g., upload to a server, deploy to a cloud service, etc.
+        # Example for deploying to GitHub Pages:
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build
+
+        # Example for deploying to Netlify:
+        # uses: nwtgck/actions-netlify@v1.2
+        # with:
+        #   publish-dir: ./build
+        #   production-branch: main
