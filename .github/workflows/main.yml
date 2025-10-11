@@ -28,26 +28,25 @@ jobs:
       - name: build
         run: npm run build
 
+      - name: uplod build artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: build
+
   deploy:
     needs: build
     runs-on: ubuntu-latest
+
     steps:
-      - name: deploy
-        # Add your deployment steps here
-        # e.g., upload to a server, deploy to a cloud service, etc.
-        # Example for deploying to GitHub Pages:
+      - name: Download build artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: build
+      - name: deployon github pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./build
           publish_branch: gh-pages
-          user_name: sanjay
+          user_name: "github-actions"
           user_email: "smchauhan2004@gmail.com"
-          commit_message: "Deploy MyReact App"
-          force_orphan: true
-          keep_files: false
-
-        # Example for deploying to Netlify:
-        # uses: nwtgck/actions-netlify@v1.2
-        # with:
-        #   publish-dir: ./build
