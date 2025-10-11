@@ -50,3 +50,11 @@ jobs:
           publish_branch: gh-pages
           user_name: "github-actions"
           user_email: "smchauhan2004@gmail.com"
+          commit_message: "Deploy MyReact App"
+          force_orphan: true
+          keep_files: false
+
+        # Example for deploying to Netlify:
+        # uses: nwtgck/actions-netlify@v1.2
+        # with:
+        #   publish-dir: ./build
