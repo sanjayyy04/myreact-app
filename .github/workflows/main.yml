@@ -32,8 +32,8 @@ jobs:
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
         with:
-          name: dist
-          path: ./dist
+          name: build
+          path: ./build
 
   deploy:
     needs: build
@@ -43,12 +43,13 @@ jobs:
       - name: Download build artifact
         uses: actions/download-artifact@v4
         with:
-          name: dist
-          path: ./dist
+          name: build
+          path: ./build
 
-      # 👇 Example: Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
+          publish_dir: ./build
+          user_name: "github-actions[bot]"
+          user_email: "github-actions[bot]@users.noreply.github.com"
